@@ -9,5 +9,6 @@ This agent only takes gmail as sender. It allows you to input your gmail email a
 Running example can be found within folder './script'.
 
 TODO:
-	1. use linkedin API to pull down a list of address according to profile that you are interested in (e.g. recruiter)
+
+1. use linkedin API to pull down a list of address according to profile that you are interested in (e.g. recruiter)
 	
