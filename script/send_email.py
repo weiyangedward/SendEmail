@@ -13,8 +13,10 @@ def send_email(from_address_file, from_password_file, email_title_file, email_bo
 	# init msg
 	msg = MIMEMultipart()
 
-	# add from- and to- address
+	# add from-address
 	msg['From'] = from_address
+
+	# add a list of to-address
 	to_address = get_list(to_addresses_file)
 	msg['To'] = ','. join(to_address)
 
@@ -48,7 +50,6 @@ def send_email(from_address_file, from_password_file, email_title_file, email_bo
 def get_list(file):
 	fp = open(file, 'rb')
 	read_in_list = [l.strip() for l in fp.readlines()]
-	print read_in_list
 	fp.close()
 	return read_in_list
 
