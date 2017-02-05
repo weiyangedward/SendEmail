@@ -5,7 +5,7 @@ from email.MIMEBase import MIMEBase
 from email import encoders
 
 
-def send_email(from_address_file, from_password_file, email_title_file, email_body_file, email_attachment_file, to_address):
+def send_email(from_address_file, from_password_file, email_title_file, email_body_file, email_attachment_file, to_addresses_file):
 
 	from_address = get_file(from_address_file)
 	from_passowrd = get_file(from_password_file)
@@ -15,7 +15,8 @@ def send_email(from_address_file, from_password_file, email_title_file, email_bo
 
 	# add from- and to- address
 	msg['From'] = from_address
-	msg['To'] = to_address
+	to_address = get_list(to_addresses_file)
+	msg['To'] = ','. join(to_address)
 
 	# add title to msg
 	msg['Subject'] = get_file(email_title_file)
@@ -44,6 +45,12 @@ def send_email(from_address_file, from_password_file, email_title_file, email_bo
 	server.sendmail(from_address, to_address, msg.as_string())
 	server.quit()
 
+def get_list(file):
+	fp = open(file, 'rb')
+	read_in_list = [l.strip() for l in fp.readlines()]
+	print read_in_list
+	fp.close()
+	return read_in_list
 
 def get_file(file):
 	fp = open(file, 'rb')
@@ -54,11 +61,11 @@ def get_file(file):
 
 def main():
 	if len(sys.argv) != 7:
-		print 'Usage: python send_email.py from_address.txt from_passowrd.txt title.txt body.txt attach.txt to_address'
+		print 'Usage: python send_email.py from_address.txt from_passowrd.txt title.txt body.txt attach.txt to_addresses.txt'
 		exit(1)
 
-	from_address_file, from_password_file, email_title_file, email_body_file, email_attachment_file, to_address = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5], sys.argv[6]
-	send_email(from_address_file, from_password_file, email_title_file, email_body_file, email_attachment_file, to_address)
+	from_address_file, from_password_file, email_title_file, email_body_file, email_attachment_file, to_addresses_file = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5], sys.argv[6]
+	send_email(from_address_file, from_password_file, email_title_file, email_body_file, email_attachment_file, to_addresses_file)
 
 if __name__ == '__main__':
 	main()
