@@ -11,4 +11,5 @@ Running example can be found within folder './script'.
 TODO:
 
 1. use linkedin API to pull down a list of address according to profile that you are interested in (e.g. recruiter)
+2. a script to generate email title, body with modified receiver and company names
 	
