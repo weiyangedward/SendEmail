@@ -4,12 +4,11 @@ from email.MIMEText import MIMEText
 from email.MIMEBase import MIMEBase
 from email import encoders
 
-from_address = 'weiyangedward@gmail.com'
-from_passowrd = '198956Yw'
-# to_address = 'weiyangedward2@gmail.com'
 
+def send_email(from_address_file, from_password_file, email_title_file, email_body_file, email_attachment_file, to_address):
 
-def send_email(email_title_file, email_body_file, email_attachment_file, to_address):
+	from_address = get_msg(from_address_file)
+	from_passowrd = get_msg(from_password_file)
 
 	# init msg
 	msg = MIMEMultipart()
@@ -54,12 +53,12 @@ def get_msg(file):
 
 
 def main():
-	if len(sys.argv) != 5:
-		print 'Usage: python send_email.py title.txt body.txt attach.txt to_address'
+	if len(sys.argv) != 7:
+		print 'Usage: python send_email.py from_address.txt from_passowrd.txt title.txt body.txt attach.txt to_address'
 		exit(1)
 
-	email_title_file, email_body_file, email_attachment_file, to_address = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
-	send_email(email_title_file, email_body_file, email_attachment_file, to_address)
+	from_address_file, from_password_file, email_title_file, email_body_file, email_attachment_file, to_address = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5], sys.argv[6]
+	send_email(from_address_file, from_password_file, email_title_file, email_body_file, email_attachment_file, to_address)
 
 if __name__ == '__main__':
 	main()
