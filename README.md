@@ -5,3 +5,4 @@ This is an python agent to send emails to a list of receivers. This agent only t
 TODO:
 
   1. change to_address to a list of receiver's addresses
+  2. use linkedin API to pull down a list of address according to profile that you are interested in (e.g. recruiter)
