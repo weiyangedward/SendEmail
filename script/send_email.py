@@ -7,8 +7,8 @@ from email import encoders
 
 def send_email(from_address_file, from_password_file, email_title_file, email_body_file, email_attachment_file, to_address):
 
-	from_address = get_msg(from_address_file)
-	from_passowrd = get_msg(from_password_file)
+	from_address = get_file(from_address_file)
+	from_passowrd = get_file(from_password_file)
 
 	# init msg
 	msg = MIMEMultipart()
@@ -18,15 +18,15 @@ def send_email(from_address_file, from_password_file, email_title_file, email_bo
 	msg['To'] = to_address
 
 	# add title to msg
-	msg['Subject'] = get_msg(email_title_file)
+	msg['Subject'] = get_file(email_title_file)
 	
 	# add body to msg
-	body = get_msg(email_body_file)
+	body = get_file(email_body_file)
 	msg.attach(MIMEText(body, 'plain'))
 
 	# add attachment to msg
 	filename = email_attachment_file
-	attachment = get_msg(email_attachment_file)
+	attachment = get_file(email_attachment_file)
 	
 	part = MIMEBase('application', 'octet-stream')
 	part.set_payload(attachment)
@@ -45,7 +45,7 @@ def send_email(from_address_file, from_password_file, email_title_file, email_bo
 	server.quit()
 
 
-def get_msg(file):
+def get_file(file):
 	fp = open(file, 'rb')
 	msg = fp.read()
 	fp.close()
