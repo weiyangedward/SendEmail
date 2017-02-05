@@ -1,6 +1,10 @@
 # SendEmail
 
-This is an python agent to send emails to a list of receivers. This agent only takes gmail as sender. It allows you to input your gmail email address and password, and send emails with title, body and an attachment. Running example can be found within fold './script'.
+This is an python agent to send emails to a list of receivers. 
+
+This agent uses gmail server to send email on behalf of you. Make sure you have 'Less secure apps' turn on: https://www.google.com/settings/security/lesssecureapps
+
+This agent only takes gmail as sender. It allows you to input your gmail email address and password, and send emails with title, body and an attachment. Running example can be found within fold './script'.
 
 TODO:
 
