@@ -4,7 +4,7 @@ This is an python agent to send emails to a list of receivers.
 
 This agent uses gmail server to send email on behalf of you. Make sure you have 'Less secure apps' turn on after sign in gmail on web: https://www.google.com/settings/security/lesssecureapps
 
-This agent:
+Agent features:
 
 - only takes gmail account as sender.
 - allows you to input your gmail email address and password.
